@@ -64,7 +64,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "bulk_upload.urls"
+ROOT_URLCONF = "chatbot.urls"
 
 TEMPLATES = [
     {
@@ -82,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "bulk_upload.wsgi.application"
+WSGI_APPLICATION = "chatbot.wsgi.application"
 
 
 # Database

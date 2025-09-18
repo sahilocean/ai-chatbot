@@ -1,0 +1,26 @@
+You received an encrypted dataset (task_bundle.enc). Your task:
+
+1) Derive a 32-byte key using PBKDF2-HMAC-SHA256 with:
+   - password: your candidate_id lowercased and trimmed
+   - salt: SHA-256 digest of the provided secret_salt (as raw 32 bytes)
+   - iterations: 120000
+   - length: 32 bytes
+
+2) Decrypt using AES-CTR:
+   - nonce: first 16 bytes of task_bundle.enc
+   - ciphertext: remaining bytes
+
+3) Parse the decrypted JSON and follow the embedded instructions to compute the
+   Strong Resume Scores and produce a file named dataset_task_output.json with:
+   {
+     "top_10_resume_ids": ["C....", ...],
+     "checksum": "sha256 of the newline-joined resume_ids in order"
+   }
+
+4) Also open the bugfix project and make tests pass. Submit both:
+   - dataset_task_output.json
+   - your edited bugfix project directory
+
+Notes:
+ - This task requires writing code. Manual decryption or guessing will not work.
+ - Determinism matters: use exact math and tie-breaking rules described.
